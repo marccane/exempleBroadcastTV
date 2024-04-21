@@ -14,8 +14,15 @@ def receive_broadcast_message(port):
   while True:
     # Receive a message
     data, addr = sock.recvfrom(1) #Número de bytes que volem rebre del broadcast
-
-    print(f"Received broadcast message from {addr}: {data.decode()}")
+    if data[0] == 1:
+      print("Engegant TV")
+    elif data[0] == 2:
+      print("Apagant TV")
+    elif data[0] == 3:
+      print("Seguent canal")
+    else:
+      print(f"Comanda desconeguda: {data[0]}")
+      
 
 if __name__ == "__main__":
   # Port for broadcasting and receiving messages

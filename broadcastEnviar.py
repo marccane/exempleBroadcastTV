@@ -8,7 +8,7 @@ def send_broadcast_message(message, port):
   # Enable broadcasting mode
   sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
   # Send the message to the broadcast address
-  sock.sendto(message.encode(), ('<broadcast>', port))
+  sock.sendto(message, ('<broadcast>', port))
   # Close the socket
   sock.close()
 
@@ -16,6 +16,16 @@ if __name__ == "__main__":
   # Port for broadcasting and receiving messages
   port = 12345
 
-  # Send a broadcast message
-  message = "Hello from the server!"
-  send_broadcast_message(message, port)
+  while True:
+    entradaUsuari = input("Tria una acció: 'on', 'off', 'canal': ")
+    if entradaUsuari == "on":
+      print("Enviant broadcast per engegar TV")
+      send_broadcast_message((1).to_bytes(), port)
+    elif entradaUsuari == "off":
+      print("Enviant broadcast per apagar TV")
+      send_broadcast_message((2).to_bytes(), port)
+    elif entradaUsuari == "canal":
+      print("Enviant broadcast per passar de canal")
+      send_broadcast_message((3).to_bytes(), port)
+    else:
+      print("Acció no reconeguda")
