@@ -1,11 +1,11 @@
 import socket
 import threading
 
-import RPi.GPIO as GPIO
-import time
+# import RPi.GPIO as GPIO
+# import time
 
 # Set GPIO mode (BCM or BOARD)
-GPIO.setmode(GPIO.BOARD)
+# GPIO.setmode(GPIO.BOARD)
 
 # Set the GPIO pin number
 led_pin = 8
@@ -33,7 +33,7 @@ def receive_broadcast_message(port):
     # Receive a message
     data, addr = sock.recvfrom(1024)
     print(f"Received broadcast message from {addr}: {data.decode()}")
-    GPIO.output(led_pin, GPIO.HIGH)
+    # GPIO.output(led_pin, GPIO.HIGH)
 
 if __name__ == "__main__":
   # Port for broadcasting and receiving messages
