@@ -2,15 +2,6 @@
 import socket
 import threading
 
-# import RPi.GPIO as GPIO
-# import time
-
-# Set GPIO mode (BCM or BOARD)
-# GPIO.setmode(GPIO.BOARD)
-
-# Set the GPIO pin number
-# led_pin = 8
-
 def receive_broadcast_message(port):
   # Create a UDP socket
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -22,9 +13,9 @@ def receive_broadcast_message(port):
 
   while True:
     # Receive a message
-    data, addr = sock.recvfrom(1024)
+    data, addr = sock.recvfrom(1) #Número de bytes que volem rebre del broadcast
+
     print(f"Received broadcast message from {addr}: {data.decode()}")
-    # GPIO.output(led_pin, GPIO.HIGH)
 
 if __name__ == "__main__":
   # Port for broadcasting and receiving messages
