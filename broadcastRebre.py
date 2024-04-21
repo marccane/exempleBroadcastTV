@@ -8,17 +8,7 @@ import threading
 # GPIO.setmode(GPIO.BOARD)
 
 # Set the GPIO pin number
-led_pin = 8
-
-def send_broadcast_message(message, port):
-  # Create a UDP socket
-  sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-  # Enable broadcasting mode
-  sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-  # Send the message to the broadcast address
-  sock.sendto(message.encode(), ('<broadcast>', port))
-  # Close the socket
-  sock.close()
+# led_pin = 8
 
 def receive_broadcast_message(port):
   # Create a UDP socket
@@ -41,6 +31,3 @@ if __name__ == "__main__":
   # Start a thread to receive broadcast messages
   receive_thread = threading.Thread(target=receive_broadcast_message, args=(port,))
   receive_thread.start()
-  # Send a broadcast message
-  message = "Hello from the server!"
-  send_broadcast_message(message, port)
