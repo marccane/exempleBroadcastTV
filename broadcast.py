@@ -10,7 +10,7 @@ import threading
 # Set the GPIO pin number
 led_pin = 8
 
-def send_broadcast_messagesend_broadcast_message(message, port):
+def send_broadcast_message(message, port):
   # Create a UDP socket
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
   # Enable broadcasting mode
